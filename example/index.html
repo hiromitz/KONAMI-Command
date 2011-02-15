@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html land="en">
+<head>
+	<meta charset="UTF-8" />
+    <title>KONAMI Command plugin for jQuery</title>
+	<style>
+		.result {
+			background: #E6EFC2;
+			border: 2px solid #C6D880;
+			color: #264409;
+			display: none;
+			padding: 3px;
+		}
+		.customCmd {
+			width: 500px;
+			color: #666666;
+		}
+	</style>
+</head>
+<body>
+    <h1>KONAMI Command</h1>
+	<p>KONAMI Command is the plugin for jQuery to implement KONAMI Code. It makes web site more fun.</p>
+	<p>ex: Press KONAMI Code (cheat code: up up down down left right left right B A), then press Enter. (default)</p>
+	<div id="default" class="result"></div>
+	<p>or you can implement to the element and customize code. ex: up right bottom left up y</p>
+	<textarea class="customCmd" readonly="readonly">Custom code here</textarea>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script src="../jquery.konamiCmd.js"></script>
+	<script>
+		$.konamiCmd({
+			callback: function() {
+				$('#default').html('Hey, you know about KONAMI Code!').show();
+			}
+		});
+		$('.customCmd').konamiCmd({
+			enter: false,
+			keys: [38, 39, 40, 37, 38, 89],
+			callback: function() {
+				$('.customCmd').val('Hey, you know about KONAMI Code!').show();
+			}
+		});
+	</script>
+</body>
+</html>
